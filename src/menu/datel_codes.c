@@ -6,7 +6,7 @@
 #include "utils/utils.h"
 
 
-#define MAX_FILE_SIZE KiB(128)
+#define MAX_FILE_SIZE KB(128)
 
 /** @brief Text file structure */
 typedef struct {

@@ -175,7 +175,7 @@ void boot (boot_params_t *params) {
         "ctc1 $zero, $f31 \n"
         "la $t3, reboot \n"
         "jr $t3 \n" ::
-        [c0_status] "i" (C0_STATUS_CU1 | C0_STATUS_CU0 | C0_STATUS_FR),
+        [c0_status] "i" (C0_STATUS_IE),
         [clear_rdram] "r" (clear_rdram),
         [skip_rdram_reset] "r" (skip_rdram_reset),
         [boot_device] "r" (boot_device),

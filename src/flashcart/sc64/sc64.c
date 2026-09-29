@@ -365,19 +365,19 @@ static flashcart_err_t sc64_load_rom (char *rom_path, flashcart_progress_callbac
 
     size_t rom_size = f_size(&fil);
 
-    if (rom_size > MiB(78)) {
+    if (rom_size > MB(78)) {
         f_close(&fil);
         return FLASHCART_ERR_LOAD;
     }
 
-    bool shadow_enabled = (rom_size > (MiB(64) - KiB(128)));
-    bool extended_enabled = (rom_size > MiB(64));
+    bool shadow_enabled = (rom_size > (MB(64) - KB(128)));
+    bool extended_enabled = (rom_size > MB(64));
 
-    size_t sdram_size = shadow_enabled ? (MiB(64) - KiB(128)) : rom_size;
-    size_t shadow_size = shadow_enabled ? MIN(rom_size - sdram_size, KiB(128)) : 0;
-    size_t extended_size = extended_enabled ? rom_size - MiB(64) : 0;
+    size_t sdram_size = shadow_enabled ? (MB(64) - KB(128)) : rom_size;
+    size_t shadow_size = shadow_enabled ? MIN(rom_size - sdram_size, KB(128)) : 0;
+    size_t extended_size = extended_enabled ? rom_size - MB(64) : 0;
 
-    size_t chunk_size = KiB(128);
+    size_t chunk_size = KB(128);
     for (unsigned int offset = 0; offset < sdram_size; offset += chunk_size) {
         size_t block_size = MIN(sdram_size - offset, chunk_size);
         if (f_read(&fil, (void *) (ROM_ADDRESS + offset), block_size, &br) != FR_OK) {
@@ -454,7 +454,7 @@ static flashcart_err_t sc64_load_file (char *file_path, uint32_t rom_offset, uin
 
     size_t file_size = f_size(&fil) - file_offset;
 
-    if (file_size > (MiB(64) - rom_offset)) {
+    if (file_size > (MB(64) - rom_offset)) {
         f_close(&fil);
         return FLASHCART_ERR_ARGS;
     }
@@ -543,12 +543,12 @@ static flashcart_err_t sc64_load_64dd_ipl (char *ipl_path, flashcart_progress_ca
 
     size_t ipl_size = f_size(&fil);
 
-    if (ipl_size > MiB(4)) {
+    if (ipl_size > MB(4)) {
         f_close(&fil);
         return FLASHCART_ERR_LOAD;
     }
 
-    size_t chunk_size = KiB(128);
+    size_t chunk_size = KB(128);
     for (unsigned int offset = 0; offset < ipl_size; offset += chunk_size) {
         size_t block_size = MIN(ipl_size - offset, chunk_size);
         if (f_read(&fil, (void *) (IPL_ADDRESS + offset), block_size, &br) != FR_OK) {

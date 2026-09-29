@@ -44,7 +44,7 @@
 #define MIN(a,b)        ({ typeof(a) _a = a; typeof(b) _b = b; _a < _b ? _a : _b; })
 
 /**
- * @def KiB(x)
+ * @def KB(x)
  * @brief Convert a value to kibibytes.
  *
  * This macro converts the given value @p x to kibibytes (multiplying by 1024).
@@ -52,10 +52,10 @@
  * @param x The value to convert.
  * @return The value in kibibytes.
  */
-#define KiB(x)          ((x) * 1024)
+#define KB(x)          ((x) * 1024)
 
 /**
- * @def MiB(x)
+ * @def MB(x)
  * @brief Convert a value to mebibytes.
  *
  * This macro converts the given value @p x to mebibytes (multiplying by 1024*1024).
@@ -63,6 +63,6 @@
  * @param x The value to convert.
  * @return The value in mebibytes.
  */
-#define MiB(x)          ((x) * 1024 * 1024)
+#define MB(x)          ((x) * 1024 * 1024)
 
 #endif // UTILS_H__

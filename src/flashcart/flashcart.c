@@ -22,12 +22,12 @@
 static const size_t SAVE_SIZE[__FLASHCART_SAVE_TYPE_END] = {
     0,
     512,
-    KiB(2),
-    KiB(32),
-    KiB(96),
-    KiB(128),
-    KiB(128),
-    KiB(128),
+    KB(2),
+    KB(32),
+    KB(96),
+    KB(128),
+    KB(128),
+    KB(128),
 };
 
 /**
@@ -152,7 +152,7 @@ flashcart_err_t flashcart_init (const char **storage_prefix) {
     if (sys_bbplayer()) {
         // TODO: Add iQue callbacks
         *storage_prefix = "bbfs:/";
-        if (bbfs_init()) {
+        if (dfs_init(DFS_DEFAULT_LOCATION)) {
             return FLASHCART_ERR_BBFS;
         }
         return FLASHCART_OK;

@@ -71,14 +71,14 @@ static flashcart_err_t ed64_vseries_load_rom (char *rom_path, flashcart_progress
 
     size_t rom_size = f_size(&fil);
 
-    if (rom_size > MiB(64)) {
+    if (rom_size > MB(64)) {
         f_close(&fil);
         return FLASHCART_ERR_LOAD;
     }
 
-    size_t sdram_size = rom_size; // (MiB(64) - KiB(128));
+    size_t sdram_size = rom_size; // (MB(64) - KB(128));
 
-    size_t chunk_size = KiB(128);
+    size_t chunk_size = KB(128);
     for (unsigned int offset = 0; offset < sdram_size; offset += chunk_size) {
         size_t block_size = MIN(sdram_size - offset, chunk_size);
         if (f_read(&fil, (void *) (ROM_ADDRESS + offset), block_size, &br) != FR_OK) {
@@ -113,7 +113,7 @@ static flashcart_err_t ed64_vseries_load_file (char *file_path, uint32_t rom_off
 
     size_t file_size = f_size(&fil) - file_offset;
 
-    if (file_size > (MiB(64) - rom_offset)) {
+    if (file_size > (MB(64) - rom_offset)) {
         f_close(&fil);
         return FLASHCART_ERR_ARGS;
     }

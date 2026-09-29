@@ -13,7 +13,7 @@
 #include "utils/utils.h"
 #include "views.h"
 
-#define MAX_FILE_SIZE KiB(128)
+#define MAX_FILE_SIZE KB(128)
 
 /** @brief Text file structure */
 typedef struct {

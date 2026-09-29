@@ -19,6 +19,7 @@ N64_ROM_REGIONFREE = 1
 N64_ROM_REGION = E
 
 N64_CFLAGS += -iquote $(SOURCE_DIR) -iquote $(ASSETS_DIR) -I $(SOURCE_DIR)/libs -isystem $(SOURCE_DIR)/libs/miniz -flto=auto $(FLAGS)
+N64_CFLAGS += -DMINIZ_NO_TIME
 
 SRCS = \
 	main.c \
