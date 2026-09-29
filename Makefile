@@ -11,6 +11,7 @@ OUTPUT_DIR = output
 MENU_VERSION ?= "Preview release"
 BUILD_TIMESTAMP = "$(shell TZ='UTC' date "+%Y-%m-%d %H:%M:%S %:z")"
 
+LIBDRAGON_PREVIEW = 2
 include $(N64_INST)/include/n64.mk
 
 N64_ROM_SAVETYPE = none
