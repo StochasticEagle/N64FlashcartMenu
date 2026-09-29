@@ -300,7 +300,7 @@ static flashcart_err_t d64_set_save_type (flashcart_save_type_t save_type) {
             type = SAVE_TYPE_SRAM_BANKED;
             break;
         case FLASHCART_SAVE_TYPE_SRAM_1MBIT:
-            // NOTE: 64drive doesn't support 128 kiB SRAM save type, fallback to 32 kiB SRAM save type
+            // NOTE: 64drive doesn't support 128 KB SRAM save type, fallback to 32 KB SRAM save type
             type = SAVE_TYPE_SRAM_256KBIT;
             break;
         case FLASHCART_SAVE_TYPE_FLASHRAM_1MBIT:
